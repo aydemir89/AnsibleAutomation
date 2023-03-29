@@ -1,0 +1,17 @@
+---
+
+  - hosts: all
+    become: true
+    tasks:
+
+      - name: Bu gorev, apache2 yuklememesini gercklestirir.
+        apt:
+          name: apache2 
+          state: absent 
+
+      - name: Bu gorev, apache icin php yuklememesini gercklestirir.
+        apt:
+          name: libapache2-mod-php 
+          state: absent
+
+
