@@ -3,19 +3,13 @@
   - hosts: all
     become: true
     tasks:
-
-      - name: Bu gorev, apt packet indexini gunceller
-        apt:
+      - name: Bu gorev, Ubuntu Apache & PHP Kutuphane yuklemesi ve apt packet indexini gunceller
+        ansible.builtin.package:
+          name:
+            - "{{ apache_server }}"
+            - "{{ php_lib }}"
+          state: latest
           update_cache: yes
+        when: ansible_distribution == "Ubuntu"
 
-      - name: Bu gorev, apache2 yuklemesini gercklestirir.
-        apt:
-          name: apache2 
-          state: latest
-
-      - name: Bu gorev, apache icin php yuklemesini gercklestirir.
-        apt:
-          name: libapache2-mod-php 
-          state: latest
-
-
+     
